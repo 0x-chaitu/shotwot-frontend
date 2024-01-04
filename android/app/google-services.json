@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "134521342419",
+    "project_id": "shotwot-190b1",
+    "storage_bucket": "shotwot-190b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134521342419:android:568afd3e4e432308bd4726",
+        "android_client_info": {
+          "package_name": "com.example.shotwot_frontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134521342419-utiak62020r6hpt65fdpcpag4in1cjqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7JOCA0E84q99IHsx1VGdr0nyvjiZBY44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "134521342419-utiak62020r6hpt65fdpcpag4in1cjqd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
