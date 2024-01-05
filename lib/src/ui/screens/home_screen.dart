@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shotwot_frontend/injection.dart';
 import 'package:shotwot_frontend/src/blocs/auth/auth_bloc.dart';
-import 'package:shotwot_frontend/src/routes/app_router.dart';
-import 'package:shotwot_frontend/src/routes/route_utils.dart';
 
 class HomeScreen extends StatelessWidget {
   static String id = 'home_screen';
@@ -45,7 +43,6 @@ class HomeScreen extends StatelessWidget {
                 return ElevatedButton(
                     onPressed: () {
                       authBloc.add(SignOut());
-                      AppRouter.router.go(PAGES.home.screenPath);
                     },
                     child: const Text('logOut'));
               },

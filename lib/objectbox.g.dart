@@ -14,7 +14,7 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import 'src/models/token.dart';
+import 'src/models/tokens.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
@@ -22,7 +22,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(1, 2201800600480564055),
       name: 'Token',
-      lastPropertyId: const IdUid(2, 2957739919968916956),
+      lastPropertyId: const IdUid(4, 4106313003507722024),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -31,8 +31,13 @@ final _entities = <ModelEntity>[
             type: 6,
             flags: 129),
         ModelProperty(
-            id: const IdUid(2, 2957739919968916956),
-            name: 'name',
+            id: const IdUid(3, 2310025985969820498),
+            name: 'accessToken',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 4106313003507722024),
+            name: 'refreashToken',
             type: 9,
             flags: 0)
       ],
@@ -73,7 +78,7 @@ ModelDefinition getObjectBoxModel() {
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
       retiredIndexUids: const [],
-      retiredPropertyUids: const [],
+      retiredPropertyUids: const [2957739919968916956],
       retiredRelationUids: const [],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
@@ -89,11 +94,16 @@ ModelDefinition getObjectBoxModel() {
           object.id = id;
         },
         objectToFB: (Token object, fb.Builder fbb) {
-          final nameOffset =
-              object.name == null ? null : fbb.writeString(object.name!);
-          fbb.startTable(3);
+          final accessTokenOffset = object.accessToken == null
+              ? null
+              : fbb.writeString(object.accessToken!);
+          final refreashTokenOffset = object.refreashToken == null
+              ? null
+              : fbb.writeString(object.refreashToken!);
+          fbb.startTable(5);
           fbb.addInt64(0, object.id);
-          fbb.addOffset(1, nameOffset);
+          fbb.addOffset(2, accessTokenOffset);
+          fbb.addOffset(3, refreashTokenOffset);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -103,8 +113,10 @@ ModelDefinition getObjectBoxModel() {
 
           final object = Token()
             ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0)
-            ..name = const fb.StringReader(asciiOptimization: true)
-                .vTableGetNullable(buffer, rootOffset, 6);
+            ..accessToken = const fb.StringReader(asciiOptimization: true)
+                .vTableGetNullable(buffer, rootOffset, 8)
+            ..refreashToken = const fb.StringReader(asciiOptimization: true)
+                .vTableGetNullable(buffer, rootOffset, 10);
 
           return object;
         })
@@ -118,6 +130,11 @@ class Token_ {
   /// see [Token.id]
   static final id = QueryIntegerProperty<Token>(_entities[0].properties[0]);
 
-  /// see [Token.name]
-  static final name = QueryStringProperty<Token>(_entities[0].properties[1]);
+  /// see [Token.accessToken]
+  static final accessToken =
+      QueryStringProperty<Token>(_entities[0].properties[1]);
+
+  /// see [Token.refreashToken]
+  static final refreashToken =
+      QueryStringProperty<Token>(_entities[0].properties[2]);
 }

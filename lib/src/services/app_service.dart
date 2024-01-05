@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shotwot_frontend/main.dart';
-import 'package:shotwot_frontend/src/models/token.dart';
+import 'package:shotwot_frontend/src/models/tokens.dart';
 import 'package:shotwot_frontend/src/routes/route_utils.dart';
 
 class AppService with ChangeNotifier {
@@ -26,7 +26,7 @@ class AppService with ChangeNotifier {
   AppService init() {
     final token = objectBox.getToken();
     if (token != null) {
-      log("token: ${token.name}");
+      log("token: ${token.accessToken}");
       userToken = token;
     }
     return AppService();
@@ -47,4 +47,6 @@ class AppService with ChangeNotifier {
     userToken = null;
     objectBox.remove();
   }
+
+  Stream<Token?> streamToken() => objectBox.streamToken();
 }

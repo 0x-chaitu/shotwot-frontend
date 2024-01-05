@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:2201800600480564055",
-      "lastPropertyId": "2:2957739919968916956",
+      "lastPropertyId": "4:4106313003507722024",
       "name": "Token",
       "properties": [
         {
@@ -15,8 +15,13 @@
           "flags": 129
         },
         {
-          "id": "2:2957739919968916956",
-          "name": "name",
+          "id": "3:2310025985969820498",
+          "name": "accessToken",
+          "type": 9
+        },
+        {
+          "id": "4:4106313003507722024",
+          "name": "refreashToken",
           "type": 9
         }
       ],
@@ -31,7 +36,9 @@
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    2957739919968916956
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

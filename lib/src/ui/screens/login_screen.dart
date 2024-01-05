@@ -101,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       );
                     },
                     child: Text(
-                      state is AuthLoadingState ? '.......' : 'Signin',
+                      state.isLoading ? '.......' : 'Signin',
                       style: const TextStyle(
                         fontSize: 20,
                       ),

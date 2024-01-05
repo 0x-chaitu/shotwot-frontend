@@ -1,7 +1,7 @@
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:shotwot_frontend/objectbox.g.dart';
-import 'package:shotwot_frontend/src/models/token.dart';
+import 'package:shotwot_frontend/src/models/tokens.dart';
 
 class ObjectBox {
   /// The Store of this app.

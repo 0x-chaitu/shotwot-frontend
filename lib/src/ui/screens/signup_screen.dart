@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -92,7 +91,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 }
               },
               builder: (context, state) {
-                log(state.isLoading ? "true" : "false");
                 return SizedBox(
                   height: 50,
                   width: double.infinity,

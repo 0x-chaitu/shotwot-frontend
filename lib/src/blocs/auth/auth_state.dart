@@ -20,14 +20,14 @@ class AuthLoadingState extends AuthState {
 }
 
 class AuthSuccessState extends AuthState {
-  final User user;
+  final bool status;
 
   AuthSuccessState({
-    required this.user
+    required this.status
   });
 
   @override
-  List<Object> get props => [user];
+  List<bool> get props => [status];
 
 }
 

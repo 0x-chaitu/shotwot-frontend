@@ -3,7 +3,6 @@ library auth;
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shotwot_frontend/src/repository/i_auth_facade.dart';
 
@@ -20,13 +19,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<Signup>((event, emit) async {
       emit(AuthLoadingState(isLoading: true));
       try {
-        final User? user = await _authFacade.register(
+        final bool status = await _authFacade.register(
             email: event.email, password: event.password);
-        if (user != null) {
-          emit(AuthSuccessState(user: user));
-        } else {
-          emit(AuthFailureState("user Signup failed!"));
-        }
+        emitEvent(status, emit);
       } catch (e) {
         log(e.toString());
       }
@@ -44,7 +39,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignWithGoogle>((event, emit) async {
       emit(AuthLoadingState(isLoading: true));
       try {
-        await _authFacade.signWithGoogle();
+        final bool status = await _authFacade.signWithGoogle();
+        emitEvent(status, emit);
       } catch (e) {
         log(e.toString());
       }
@@ -54,17 +50,21 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<Signin>((event, emit) async {
       emit(AuthLoadingState(isLoading: true));
       try {
-        final User? user = await _authFacade.signIn(
+        final bool status = await _authFacade.signIn(
             email: event.email, password: event.password);
-        if (user != null) {
-          emit(AuthSuccessState(user: user));
-        } else {
-          emit(AuthFailureState("user Signup failed!"));
-        }
+        emitEvent(status, emit);
       } catch (e) {
         log(e.toString());
       }
       emit(AuthLoadingState(isLoading: false));
     });
+  }
+
+  void emitEvent(bool status, Emitter<AuthState> emit) {
+    if (status) {
+      emit(AuthSuccessState(status: status));
+    } else {
+      emit(AuthFailureState("user Signup failed!"));
+    }
   }
 }
